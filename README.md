@@ -1,0 +1,1 @@
+# euler-triangular-number
