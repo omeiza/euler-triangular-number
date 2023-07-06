@@ -9,4 +9,4 @@ describe("First triangle number to have over nth divisors", () => {
 	test("Get triangle number to have over 5 divisors", () => {
 		expect(getFirstNthTriangular(500)).toEqual(76576500);
 	});
-});
+})
