@@ -16,19 +16,30 @@
  * Reference: https://projecteuler.net/problem=12
  */
 
-export default function getFirstNthTriangular(limit: number): number | void {
-	const getFactors = (dividend: number): number[] => {
-		const factors = [];
-		for (let i = 1; i <= dividend; i++) {
-			if (dividend % i == 0) factors.push(i);
+export default function getFirstNthTriangular( limit: number ): number | void {
+	const countFactors = ( dividend: number ): number => {
+		let count: number = 0;
+		const squareRoot: number = Math.floor( Math.sqrt( dividend ) );
+
+		for ( let i = 1; i <= squareRoot; i++ ) {
+			if ( dividend % i === 0 ) count = count + 2;
 		}
 
-		return factors;
+		if ( squareRoot * squareRoot === dividend ) {
+			count--;
+		}
+
+		return count;
 	}
 
-	let prev = 0;
-	for (let x = 1; x < Infinity; x++) {
-		prev = prev + x;
-		if (getFactors(prev).length > limit) return prev;
+	let n = 1;
+	let triangularNumberCount = 0;
+
+	while ( 1 ) {
+		triangularNumberCount += n;
+		let divisors = countFactors( triangularNumberCount );
+
+		if (divisors > limit ) return triangularNumberCount;
+		n++;
 	}
 }
